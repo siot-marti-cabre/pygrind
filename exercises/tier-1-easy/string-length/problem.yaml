@@ -1,0 +1,12 @@
+id: "t1-004"
+title: "String Length"
+tier: 1
+topic: "strings"
+description: "Read a string from input and print its length."
+time_estimate: 2
+hint: "Use the built-in len() function."
+solution: |
+  s = input()
+  print(len(s))
+source: "original"
+validation: "exact"

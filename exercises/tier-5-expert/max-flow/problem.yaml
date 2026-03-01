@@ -1,0 +1,79 @@
+id: "t5-003"
+title: "Maximum Flow (Edmonds-Karp)"
+tier: 5
+topic: "graph theory"
+description: |
+  Given a directed weighted graph, compute the maximum flow from the source
+  (node 1) to the sink (node N) using the Edmonds-Karp algorithm (BFS-based
+  Ford-Fulkerson method).
+
+  Input format:
+    - Line 1: two space-separated integers N M
+      (N = number of nodes, 2 <= N <= 500; M = number of edges, 0 <= M <= 5000)
+    - Next M lines: three space-separated integers "u v c" representing a directed
+      edge from node u to node v with capacity c (1 <= u,v <= N, 1 <= c <= 10000)
+    Nodes are numbered 1 through N. There may be parallel edges.
+
+  Output format:
+    - A single integer: the maximum flow from node 1 to node N.
+time_estimate: 20
+hint: "Implement the Edmonds-Karp algorithm: repeatedly find shortest augmenting paths from source to sink using BFS on the residual graph, and push flow along each path until no augmenting path exists."
+solution: |
+  import sys
+  from collections import deque
+
+  def solve():
+      data = sys.stdin.read().split()
+      idx = 0
+      n = int(data[idx]); idx += 1
+      m = int(data[idx]); idx += 1
+
+      graph = [[] for _ in range(n + 1)]
+      cap = {}
+
+      for _ in range(m):
+          u = int(data[idx]); idx += 1
+          v = int(data[idx]); idx += 1
+          c = int(data[idx]); idx += 1
+          if (u, v) not in cap:
+              cap[(u, v)] = 0
+              cap[(v, u)] = 0
+              graph[u].append(v)
+              graph[v].append(u)
+          cap[(u, v)] += c
+
+      source = 1
+      sink = n
+      total = 0
+
+      while True:
+          parent = [-1] * (n + 1)
+          parent[source] = source
+          queue = deque([source])
+          while queue and parent[sink] == -1:
+              u = queue.popleft()
+              for v in graph[u]:
+                  if parent[v] == -1 and cap.get((u, v), 0) > 0:
+                      parent[v] = u
+                      queue.append(v)
+          if parent[sink] == -1:
+              break
+          path_flow = float('inf')
+          v = sink
+          while v != source:
+              u = parent[v]
+              path_flow = min(path_flow, cap[(u, v)])
+              v = u
+          v = sink
+          while v != source:
+              u = parent[v]
+              cap[(u, v)] -= path_flow
+              cap[(v, u)] += path_flow
+              v = u
+          total += path_flow
+
+      print(total)
+
+  solve()
+source: "original"
+validation: "exact"

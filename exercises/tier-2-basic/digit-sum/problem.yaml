@@ -1,0 +1,12 @@
+id: "t2-006"
+title: "Digit Sum"
+tier: 2
+topic: "loops"
+description: "Read a non-negative integer from stdin. Print the sum of its digits. For example, the digit sum of 123 is 1 + 2 + 3 = 6."
+time_estimate: 5
+hint: "You can iterate over the characters of the string representation, or use modulo and integer division in a loop."
+solution: |
+  n = input().strip()
+  print(sum(int(d) for d in n))
+source: "original"
+validation: "exact"

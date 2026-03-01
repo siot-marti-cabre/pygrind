@@ -1,0 +1,12 @@
+id: "t1-008"
+title: "Reverse Number"
+tier: 1
+topic: "math"
+description: "Read a positive integer and print it with its digits reversed. There should be no leading zeros in the output (e.g., 1200 becomes 21)."
+time_estimate: 2
+hint: "Convert the number to a string, reverse it, then convert back to int to strip leading zeros."
+solution: |
+  n = int(input())
+  print(int(str(n)[::-1]))
+source: "original"
+validation: "exact"

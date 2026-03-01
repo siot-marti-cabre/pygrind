@@ -1,0 +1,12 @@
+id: "t1-003"
+title: "Even or Odd"
+tier: 1
+topic: "conditionals"
+description: "Read an integer and print 'even' if it is even, or 'odd' if it is odd."
+time_estimate: 2
+hint: "Use the modulo operator (%) to check divisibility by 2."
+solution: |
+  n = int(input())
+  print("even" if n % 2 == 0 else "odd")
+source: "original"
+validation: "exact"

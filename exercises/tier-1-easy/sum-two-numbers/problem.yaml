@@ -1,0 +1,13 @@
+id: "t1-002"
+title: "Sum Two Numbers"
+tier: 1
+topic: "math"
+description: "Read two integers (one per line) and print their sum."
+time_estimate: 2
+hint: "Use int() to convert the input strings to integers before adding."
+solution: |
+  a = int(input())
+  b = int(input())
+  print(a + b)
+source: "original"
+validation: "exact"

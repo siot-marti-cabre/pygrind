@@ -1,0 +1,35 @@
+id: "t5-002"
+title: "Maximum Subarray Sum (Kadane's)"
+tier: 5
+topic: "optimization"
+description: |
+  Given an array of N integers (which may include negative numbers), find the
+  contiguous subarray with the largest sum and print that sum. If all elements
+  are negative, the answer is the maximum (least negative) element.
+
+  Input format:
+    - Line 1: integer N (1 <= N <= 100000)
+    - Next N lines: one integer per line (each between -1000000 and 1000000)
+
+  Output format:
+    - A single integer: the maximum subarray sum.
+time_estimate: 12
+hint: "Use Kadane's algorithm: maintain a running sum, resetting it to the current element whenever the running sum drops below the current element. Track the global maximum throughout."
+solution: |
+  import sys
+
+  def solve():
+      data = sys.stdin.read().split()
+      n = int(data[0])
+      nums = [int(data[i + 1]) for i in range(n)]
+      max_sum = nums[0]
+      cur = nums[0]
+      for i in range(1, n):
+          cur = max(nums[i], cur + nums[i])
+          if cur > max_sum:
+              max_sum = cur
+      print(max_sum)
+
+  solve()
+source: "original"
+validation: "exact"

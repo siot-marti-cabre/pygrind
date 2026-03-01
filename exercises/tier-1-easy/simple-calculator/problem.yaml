@@ -1,0 +1,21 @@
+id: "t1-006"
+title: "Simple Calculator"
+tier: 1
+topic: "math"
+description: "Read two integers and an operator (+, -, *, /). Line 1: first number. Line 2: operator. Line 3: second number. Print the result. For division, print the integer division result."
+time_estimate: 2
+hint: "Use if/elif to check the operator and apply the correct operation. Use // for integer division."
+solution: |
+  a = int(input())
+  op = input()
+  b = int(input())
+  if op == "+":
+      print(a + b)
+  elif op == "-":
+      print(a - b)
+  elif op == "*":
+      print(a * b)
+  elif op == "/":
+      print(a // b)
+source: "original"
+validation: "exact"
