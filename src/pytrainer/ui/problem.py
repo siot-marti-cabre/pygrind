@@ -30,6 +30,7 @@ class ProblemPanel(QWidget):
     """Panel displaying the current exercise problem."""
 
     hint_viewed = pyqtSignal()
+    solution_viewed = pyqtSignal()
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -87,6 +88,45 @@ class ProblemPanel(QWidget):
 
         self._current_hint: str | None = None
 
+        # Solution viewer widgets (E7-S02)
+        self._solution_button = QPushButton("Show Solution")
+        self._solution_button.clicked.connect(self._on_solution_clicked)
+        self._solution_button.setVisible(False)
+        layout.addWidget(self._solution_button)
+
+        self._solution_label = QLabel()
+        mono_sol = QFont("monospace")
+        mono_sol.setStyleHint(QFont.StyleHint.Monospace)
+        self._solution_label.setFont(mono_sol)
+        self._solution_label.setStyleSheet(
+            "background-color: #F5F5F5; padding: 8px; border-radius: 4px;"
+        )
+        self._solution_label.setWordWrap(True)
+        self._solution_label.setVisible(False)
+        layout.addWidget(self._solution_label)
+
+        self._current_solution: str | None = None
+
+    def _on_solution_clicked(self) -> None:
+        """Show confirmation dialog, then reveal solution."""
+        from PyQt6.QtWidgets import QMessageBox
+
+        reply = QMessageBox.question(
+            self,
+            "View Solution",
+            "Viewing the solution will set this problem's score to 0. Continue?",
+        )
+        if reply == QMessageBox.StandardButton.Yes:
+            self._reveal_solution()
+
+    def _reveal_solution(self) -> None:
+        """Show solution code and emit signal."""
+        text = self._current_solution if self._current_solution else ""
+        self._solution_label.setText(text)
+        self._solution_label.setVisible(True)
+        self._solution_button.setEnabled(False)
+        self.solution_viewed.emit()
+
     def _on_hint_clicked(self) -> None:
         """Reveal hint text and disable button (one-way)."""
         hint_text = self._current_hint if self._current_hint else "No hint available"
@@ -138,3 +178,18 @@ class ProblemPanel(QWidget):
             # Difficult mode or mode=None (backward compat)
             self._hint_label.setVisible(False)
             self._hint_button.setVisible(False)
+
+        # Solution viewer configuration (E7-S02)
+        self._current_solution = exercise.solution
+        self._solution_label.setVisible(False)
+
+        if mode == DifficultyMode.BEGINNER:
+            self._solution_button.setVisible(True)
+            if exercise.solution:
+                self._solution_button.setEnabled(True)
+                self._solution_button.setToolTip("")
+            else:
+                self._solution_button.setEnabled(False)
+                self._solution_button.setToolTip("No solution available")
+        else:
+            self._solution_button.setVisible(False)
