@@ -1,0 +1,13 @@
+id: "t1-007"
+title: "Temperature Converter"
+tier: 1
+topic: "math"
+description: "Read a temperature in Celsius (integer) and print the Fahrenheit equivalent rounded to the nearest integer. Formula: F = C * 9/5 + 32."
+time_estimate: 2
+hint: "Use the formula F = C * 9/5 + 32 and round() to get the nearest integer."
+solution: |
+  c = int(input())
+  f = round(c * 9 / 5 + 32)
+  print(f)
+source: "original"
+validation: "exact"

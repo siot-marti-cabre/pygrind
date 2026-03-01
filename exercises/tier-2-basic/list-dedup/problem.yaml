@@ -1,0 +1,20 @@
+id: "t2-008"
+title: "List Deduplication"
+tier: 2
+topic: "lists"
+description: "Read an integer N from the first line of stdin, then read N integers (one per line). Print the unique values in the order they first appeared, one per line. Duplicates should be removed but the original order of first occurrences must be preserved."
+time_estimate: 5
+hint: "Use a set to track which values you have already seen, and a list to preserve insertion order."
+solution: |
+  n = int(input())
+  seen = set()
+  result = []
+  for _ in range(n):
+      x = int(input())
+      if x not in seen:
+          seen.add(x)
+          result.append(x)
+  for v in result:
+      print(v)
+source: "original"
+validation: "exact"

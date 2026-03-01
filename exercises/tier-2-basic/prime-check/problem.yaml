@@ -1,0 +1,20 @@
+id: "t2-005"
+title: "Prime Check"
+tier: 2
+topic: "loops"
+description: "Read a single integer from stdin. Print \"prime\" if the number is a prime number, or \"not prime\" otherwise. A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. Note that 1 is not considered prime."
+time_estimate: 5
+hint: "You only need to check divisors up to the square root of the number."
+solution: |
+  n = int(input())
+  if n < 2:
+      print("not prime")
+  else:
+      is_prime = True
+      for i in range(2, int(n**0.5) + 1):
+          if n % i == 0:
+              is_prime = False
+              break
+      print("prime" if is_prime else "not prime")
+source: "original"
+validation: "exact"

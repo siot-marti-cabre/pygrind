@@ -1,0 +1,13 @@
+id: "t1-005"
+title: "Character Count"
+tier: 1
+topic: "strings"
+description: "Read a string on line 1 and a single character on line 2. Print how many times that character appears in the string."
+time_estimate: 2
+hint: "Use the .count() method on strings."
+solution: |
+  s = input()
+  c = input()
+  print(s.count(c))
+source: "original"
+validation: "exact"

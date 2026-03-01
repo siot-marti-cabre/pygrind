@@ -1,0 +1,16 @@
+id: "t2-001"
+title: "List Sum and Average"
+tier: 2
+topic: "lists"
+description: "Read an integer N on the first line, then read N integers (one per line). Print the sum of all integers on the first line, and the average rounded to 2 decimal places on the second line."
+time_estimate: 5
+hint: "Use sum() for the total and format the average with f-string formatting like f'{avg:.2f}' to get exactly 2 decimal places."
+solution: |
+  n = int(input())
+  nums = [int(input()) for _ in range(n)]
+  total = sum(nums)
+  avg = total / n
+  print(total)
+  print(f"{avg:.2f}")
+source: "original"
+validation: "exact"

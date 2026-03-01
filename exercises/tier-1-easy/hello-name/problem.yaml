@@ -1,0 +1,12 @@
+id: "t1-001"
+title: "Hello Name"
+tier: 1
+topic: "strings"
+description: "Read a name from input and print 'Hello, {name}!'"
+time_estimate: 2
+hint: "Use f-strings or string concatenation."
+solution: |
+  name = input()
+  print(f"Hello, {name}!")
+source: "original"
+validation: "exact"

@@ -1,0 +1,43 @@
+id: "t5-001"
+title: "Minimum Edit Distance"
+tier: 5
+topic: "advanced dp"
+description: |
+  Given two strings, compute the minimum edit distance (Levenshtein distance)
+  between them. The minimum edit distance is the minimum number of single-character
+  insertions, deletions, or substitutions required to transform the first string
+  into the second string.
+
+  Input format:
+    - Line 1: the first string (0 <= length <= 1000)
+    - Line 2: the second string (0 <= length <= 1000)
+    Strings consist of lowercase English letters only. Either string may be empty.
+
+  Output format:
+    - A single integer: the minimum edit distance.
+time_estimate: 15
+hint: "Use a 2D DP table where dp[i][j] represents the edit distance between the first i characters of string 1 and the first j characters of string 2. Optimize space to O(min(n,m)) using a 1D array."
+solution: |
+  import sys
+
+  def solve():
+      data = sys.stdin.read().split('\n')
+      s1 = data[0] if len(data) > 0 else ""
+      s2 = data[1] if len(data) > 1 else ""
+      m, n = len(s1), len(s2)
+      dp = list(range(n + 1))
+      for i in range(1, m + 1):
+          prev = dp[0]
+          dp[0] = i
+          for j in range(1, n + 1):
+              temp = dp[j]
+              if s1[i - 1] == s2[j - 1]:
+                  dp[j] = prev
+              else:
+                  dp[j] = 1 + min(prev, dp[j], dp[j - 1])
+              prev = temp
+      print(dp[n])
+
+  solve()
+source: "original"
+validation: "exact"

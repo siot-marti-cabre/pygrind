@@ -1,0 +1,12 @@
+id: "t2-003"
+title: "Count Vowels"
+tier: 2
+topic: "strings"
+description: "Read a single string from stdin. Print the count of vowels (a, e, i, o, u) in the string. The comparison should be case-insensitive, so both uppercase and lowercase vowels are counted."
+time_estimate: 5
+hint: "Convert the string to lowercase and count characters that appear in the string 'aeiou'."
+solution: |
+  s = input().lower()
+  print(sum(1 for c in s if c in "aeiou"))
+source: "original"
+validation: "exact"
