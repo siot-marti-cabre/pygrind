@@ -1,0 +1,12 @@
+id: "t2-002"
+title: "Palindrome Check"
+tier: 2
+topic: "strings"
+description: "Read a single string from stdin. Print \"yes\" if the string is a palindrome (case-insensitive comparison), or \"no\" otherwise. A palindrome reads the same forwards and backwards."
+time_estimate: 5
+hint: "Convert the string to lowercase with .lower(), then compare it to its reverse using slicing [::-1]."
+solution: |
+  s = input().lower()
+  print("yes" if s == s[::-1] else "no")
+source: "original"
+validation: "exact"

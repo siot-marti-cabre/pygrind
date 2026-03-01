@@ -1,0 +1,12 @@
+id: "t2-007"
+title: "Word Reversal"
+tier: 2
+topic: "strings"
+description: "Read a sentence from stdin (a single line of space-separated words). Print the sentence with the order of words reversed. Do not reverse the characters within each word, only the word order."
+time_estimate: 5
+hint: "Split the string into a list of words, reverse the list, then join them back with spaces."
+solution: |
+  words = input().split()
+  print(" ".join(reversed(words)))
+source: "original"
+validation: "exact"
