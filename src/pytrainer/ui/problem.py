@@ -1,9 +1,13 @@
-"""Problem display panel — shows exercise title, tier, description, sample I/O."""
+"""Problem display panel — shows exercise title, tier, description, sample I/O, hints."""
 
+from __future__ import annotations
+
+from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtGui import QFont
-from PyQt6.QtWidgets import QLabel, QTextEdit, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QLabel, QPushButton, QTextEdit, QVBoxLayout, QWidget
 
 from pytrainer.models.exercise import Exercise
+from pytrainer.models.session import DifficultyMode
 
 _TIER_COLORS = {
     1: "#4CAF50",
@@ -24,6 +28,8 @@ _TIER_NAMES = {
 
 class ProblemPanel(QWidget):
     """Panel displaying the current exercise problem."""
+
+    hint_viewed = pyqtSignal()
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -65,7 +71,35 @@ class ProblemPanel(QWidget):
         self._output_edit.setFont(mono)
         layout.addWidget(self._output_edit)
 
-    def set_exercise(self, exercise: Exercise) -> None:
+        # Hint widgets (E7-S01)
+        self._hint_button = QPushButton("Show Hint")
+        self._hint_button.clicked.connect(self._on_hint_clicked)
+        self._hint_button.setVisible(False)
+        layout.addWidget(self._hint_button)
+
+        self._hint_label = QLabel()
+        self._hint_label.setStyleSheet(
+            "font-style: italic; background-color: #FFF9C4; padding: 8px; border-radius: 4px;"
+        )
+        self._hint_label.setWordWrap(True)
+        self._hint_label.setVisible(False)
+        layout.addWidget(self._hint_label)
+
+        self._current_hint: str | None = None
+
+    def _on_hint_clicked(self) -> None:
+        """Reveal hint text and disable button (one-way)."""
+        hint_text = self._current_hint if self._current_hint else "No hint available"
+        self._hint_label.setText(hint_text)
+        self._hint_label.setVisible(True)
+        self._hint_button.setEnabled(False)
+        self.hint_viewed.emit()
+
+    def set_exercise(
+        self,
+        exercise: Exercise,
+        mode: DifficultyMode | None = None,
+    ) -> None:
         """Update all content from the given exercise."""
         self._title_label.setText(exercise.title)
 
@@ -86,3 +120,21 @@ class ProblemPanel(QWidget):
         else:
             self._input_edit.clear()
             self._output_edit.clear()
+
+        # Hint configuration (E7-S01)
+        self._current_hint = exercise.hint
+        self._hint_button.setEnabled(True)
+
+        if mode == DifficultyMode.BEGINNER:
+            hint_text = exercise.hint if exercise.hint else "No hint available"
+            self._hint_label.setText(hint_text)
+            self._hint_label.setVisible(True)
+            self._hint_button.setVisible(False)
+            self.hint_viewed.emit()
+        elif mode == DifficultyMode.MEDIUM:
+            self._hint_label.setVisible(False)
+            self._hint_button.setVisible(True)
+        else:
+            # Difficult mode or mode=None (backward compat)
+            self._hint_label.setVisible(False)
+            self._hint_button.setVisible(False)
