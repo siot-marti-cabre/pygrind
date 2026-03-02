@@ -1,13 +1,13 @@
 # Changelog
 
-All notable changes to the Python Competition Trainer will be documented in this file.
+All notable changes to the Python Competition Grind will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.0.0] - 2026-03-01
 
-Initial release of the Python Competition Trainer — a cross-platform desktop application
+Initial release of the Python Competition Grind — a cross-platform desktop application
 that simulates HP Code Wars-style coding competitions for practice and skill development.
 
 ### Features
@@ -22,7 +22,7 @@ that simulates HP Code Wars-style coding competitions for practice and skill dev
 
 ### Infrastructure
 
-- Project scaffold with src/pytrainer/ package layout and pyproject.toml
+- Project scaffold with src/pygrind/ package layout and pyproject.toml
 - pytest + pytest-qt test infrastructure with 351+ tests
 - ruff for linting and formatting
 - 5 test exercise fixtures (one per tier) for development testing

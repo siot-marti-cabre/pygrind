@@ -2,7 +2,7 @@
 
 from PyQt6.QtWidgets import QLabel
 
-from pytrainer.ui.timer_widget import TimerWidget
+from pygrind.ui.timer_widget import TimerWidget
 
 
 class TestTimeFormat:

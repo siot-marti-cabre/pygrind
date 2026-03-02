@@ -4,15 +4,15 @@ import sqlite3
 
 import pytest
 
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import (
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import (
     DifficultyMode,
     ProblemState,
     ProblemStatus,
     SessionConfig,
     SessionResult,
 )
-from pytrainer.storage.database import Database
+from pygrind.storage.database import Database
 
 
 @pytest.fixture

@@ -34,8 +34,8 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `installer/linux/pytrainer.desktop` — FreeDesktop .desktop entry
-- `installer/linux/pytrainer.svg` — Application icon (SVG)
+- `installer/linux/pygrind.desktop` — FreeDesktop .desktop entry
+- `installer/linux/pygrind.svg` — Application icon (SVG)
 - `installer/linux/build_appimage.sh` — AppImage build script using appimagetool
 - `docs/INSTALL.md` — Installation instructions for Linux, Windows, macOS
 - `tests/test_linux_distribution.py` — 9 tests covering AppImage assets, integration, docs

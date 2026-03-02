@@ -41,7 +41,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/submit_flow.py` — SubmitFlowController QObject wiring Run/Submit to pipeline (~95 lines)
+- `src/pygrind/ui/submit_flow.py` — SubmitFlowController QObject wiring Run/Submit to pipeline (~95 lines)
 - `tests/ui/test_submit_flow.py` — 11 tests covering all 7 ACs (~180 lines)
 
 **Key Decisions:**

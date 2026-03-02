@@ -39,7 +39,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/scorer.py` — Scorer.calculate() pure function (~40 lines)
+- `src/pygrind/core/scorer.py` — Scorer.calculate() pure function (~40 lines)
 - `tests/core/test_scorer.py` — 22 tests covering all 6 AC (base, bonus, penalty, solution, int, boundary)
 
 **Key Decisions:**

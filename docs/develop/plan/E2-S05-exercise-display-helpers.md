@@ -36,7 +36,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/display.py` — format_description(), get_sample_io(), get_tier_badge() (~50 lines)
+- `src/pygrind/core/display.py` — format_description(), get_sample_io(), get_tier_badge() (~50 lines)
 - `tests/core/test_display.py` — 11 tests covering all 4 AC (description, sample I/O, tier badge, no test cases)
 
 **Key Decisions:**

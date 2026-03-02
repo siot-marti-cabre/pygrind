@@ -117,7 +117,7 @@ class TestConftest:
         assert (fixture_exercises_dir / "tier-1-easy").is_dir()
 
     def test_sample_exercise(self, sample_exercise):
-        from pytrainer.models.exercise import Exercise
+        from pygrind.models.exercise import Exercise
 
         assert isinstance(sample_exercise, Exercise)
         assert sample_exercise.id
@@ -126,6 +126,6 @@ class TestConftest:
         assert len(sample_exercise.test_cases) >= 1
 
     def test_sample_session_config(self, sample_session_config):
-        from pytrainer.models.session import SessionConfig
+        from pygrind.models.session import SessionConfig
 
         assert isinstance(sample_session_config, SessionConfig)

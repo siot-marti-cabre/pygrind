@@ -40,7 +40,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/session_mgr.py` — SessionManager QObject with state machine, JSON serialization, end() (~150 lines)
+- `src/pygrind/core/session_mgr.py` — SessionManager QObject with state machine, JSON serialization, end() (~150 lines)
 - `tests/core/test_session_mgr.py` — 26 tests covering all 7 ACs (~200 lines)
 
 **Key Decisions:**

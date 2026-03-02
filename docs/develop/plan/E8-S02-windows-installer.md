@@ -24,7 +24,7 @@ M
 - [x] Installer file size under 200 MB
 
 ## Tasks
-- **T1: Create Inno Setup script** -- Write installer/windows/pytrainer.iss: source dir (PyInstaller dist/), output filename, Start Menu group, Desktop icon, uninstall support.
+- **T1: Create Inno Setup script** -- Write installer/windows/pygrind.iss: source dir (PyInstaller dist/), output filename, Start Menu group, Desktop icon, uninstall support.
 - **T2: Bundle embedded Python** -- Download Python 3.10+ embeddable package for Windows. Include in installer. Configure app to use this Python for code execution (not system Python).
 - **T3: Test install/uninstall** -- Build installer, run on Windows 11 (VM or physical). Verify: install wizard, app launch from Start Menu, code execution works, uninstall removes all files.
 
@@ -37,7 +37,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `installer/windows/pytrainer.iss` — Inno Setup script with wizard, shortcuts, uninstaller (~60 lines)
+- `installer/windows/pygrind.iss` — Inno Setup script with wizard, shortcuts, uninstaller (~60 lines)
 - `installer/windows/embed_python.py` — Downloads Python 3.12 embeddable package (~60 lines)
 - `LICENSE` — MIT license for installer wizard display
 - `scripts/build.py` — Updated with Windows platform documentation

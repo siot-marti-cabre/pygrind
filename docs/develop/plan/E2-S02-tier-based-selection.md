@@ -37,7 +37,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/selector.py` — select_session() with random.sample() per tier (~45 lines)
+- `src/pygrind/core/selector.py` — select_session() with random.sample() per tier (~45 lines)
 - `tests/core/test_selector.py` — 11 tests covering all 5 AC (distribution, randomness, no repeats, insufficient, ordering)
 
 **Key Decisions:**

@@ -21,7 +21,7 @@ S
 - [x] models/session.py contains ProblemState, SessionConfig, SessionResult dataclasses
 - [x] ProblemStatus enum has UNSOLVED, ATTEMPTED, SOLVED values
 - [x] DifficultyMode enum has BEGINNER, MEDIUM, DIFFICULT values
-- [x] All models are importable from pytrainer.models
+- [x] All models are importable from pygrind.models
 
 ## Tasks
 - **T1: Implement exercise models** — Create models/exercise.py with TestCase (lazy file loading via @property), Exercise (all fields: id, title, tier, topic, description, time_estimate, test_cases, hint, solution, source, validation, tolerance), and ExerciseIndex = dict[int, list[Exercise]] type alias.
@@ -39,9 +39,9 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/models/exercise.py` — TestCase, Exercise, ExerciseIndex (~47 lines)
-- `src/pytrainer/models/session.py` — ProblemStatus, DifficultyMode, ProblemState, SessionConfig, SessionResult (~55 lines)
-- `src/pytrainer/models/__init__.py` — Re-exports all models (~20 lines)
+- `src/pygrind/models/exercise.py` — TestCase, Exercise, ExerciseIndex (~47 lines)
+- `src/pygrind/models/session.py` — ProblemStatus, DifficultyMode, ProblemState, SessionConfig, SessionResult (~55 lines)
+- `src/pygrind/models/__init__.py` — Re-exports all models (~20 lines)
 - `tests/core/test_models.py` — Comprehensive model tests (23 tests)
 
 **Key Decisions:**

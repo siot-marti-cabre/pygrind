@@ -34,7 +34,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/session_config.py` — SessionConfigScreen with radio buttons, descriptions, signals (~70 lines)
+- `src/pygrind/ui/session_config.py` — SessionConfigScreen with radio buttons, descriptions, signals (~70 lines)
 - `tests/ui/test_session_config.py` — 9 tests covering all ACs
 
 **Key Decisions:**

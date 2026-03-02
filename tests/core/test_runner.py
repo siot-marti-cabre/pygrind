@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from pytrainer.core.runner import CodeRunner
+from pygrind.core.runner import CodeRunner
 
 
 @pytest.fixture

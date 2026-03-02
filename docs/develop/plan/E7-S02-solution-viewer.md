@@ -35,7 +35,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/problem.py` — Added solution_viewed signal, Show Solution button, solution label, confirmation dialog, reveal logic (~40 lines added)
+- `src/pygrind/ui/problem.py` — Added solution_viewed signal, Show Solution button, solution label, confirmation dialog, reveal logic (~40 lines added)
 - `tests/ui/test_solution_viewer.py` — 8 tests covering visibility, disabled state, reveal, signal emission (new file)
 
 **Key Decisions:**

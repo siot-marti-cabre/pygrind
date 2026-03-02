@@ -1,12 +1,12 @@
-"""Shared pytest fixtures for PyTrainer test suite."""
+"""Shared pytest fixtures for PyGrind test suite."""
 
 from pathlib import Path
 
 import pytest
 import yaml
 
-from pytrainer.models.exercise import Exercise, TestCase
-from pytrainer.models.session import DifficultyMode, SessionConfig
+from pygrind.models.exercise import Exercise, TestCase
+from pygrind.models.session import DifficultyMode, SessionConfig
 
 
 @pytest.fixture

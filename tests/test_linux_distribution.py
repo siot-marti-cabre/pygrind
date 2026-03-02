@@ -8,12 +8,12 @@ class TestAppImageAssets:
 
     def test_desktop_file_exists(self):
         """AppImage .desktop file must exist."""
-        desktop = Path(__file__).parent.parent / "installer" / "linux" / "pytrainer.desktop"
-        assert desktop.is_file(), "installer/linux/pytrainer.desktop not found"
+        desktop = Path(__file__).parent.parent / "installer" / "linux" / "pygrind.desktop"
+        assert desktop.is_file(), "installer/linux/pygrind.desktop not found"
 
     def test_desktop_file_has_required_fields(self):
         """Desktop file must have Name, Exec, Icon, Type, Categories."""
-        desktop = Path(__file__).parent.parent / "installer" / "linux" / "pytrainer.desktop"
+        desktop = Path(__file__).parent.parent / "installer" / "linux" / "pygrind.desktop"
         content = desktop.read_text()
         assert "[Desktop Entry]" in content
         assert "Name=" in content
@@ -25,9 +25,9 @@ class TestAppImageAssets:
     def test_icon_file_exists(self):
         """Application icon must exist (PNG or SVG)."""
         linux_dir = Path(__file__).parent.parent / "installer" / "linux"
-        icons = list(linux_dir.glob("pytrainer.*"))
+        icons = list(linux_dir.glob("pygrind.*"))
         icon_exts = {p.suffix for p in icons}
-        assert icon_exts & {".png", ".svg"}, "No pytrainer.png or .svg icon found"
+        assert icon_exts & {".png", ".svg"}, "No pygrind.png or .svg icon found"
 
     def test_appimage_build_script_exists(self):
         """AppImage build script must exist."""

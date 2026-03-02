@@ -38,7 +38,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/storage/autosave.py` — AutoSave QObject with QTimer, SQLite upsert, recovery (~100 lines)
+- `src/pygrind/storage/autosave.py` — AutoSave QObject with QTimer, SQLite upsert, recovery (~100 lines)
 - `tests/storage/test_autosave.py` — 11 tests covering all 6 ACs (~160 lines)
 
 **Key Decisions:**

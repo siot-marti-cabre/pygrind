@@ -3,9 +3,9 @@ requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pytrainer"
+name = "pygrind"
 version = "1.0.0"
-description = "Python Competition Trainer — HP Code Wars-style coding competitions"
+description = "PyGrind — Python Competition Grind"
 requires-python = ">=3.10"
 license = "MIT"
 dependencies = [
@@ -24,7 +24,7 @@ dev = [
 ]
 
 [project.scripts]
-pytrainer = "pytrainer.app:main"
+pygrind = "pygrind.app:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

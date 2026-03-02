@@ -11,7 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from pytrainer.core.loader import ExerciseLoader
+from pygrind.core.loader import ExerciseLoader
 
 EXERCISES_DIR = Path(__file__).parents[2] / "exercises"
 TIER3_DIR = EXERCISES_DIR / "tier-3-medium"

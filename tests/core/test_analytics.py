@@ -2,16 +2,16 @@
 
 import pytest
 
-from pytrainer.core.analytics import SessionAnalytics
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import (
+from pygrind.core.analytics import SessionAnalytics
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import (
     DifficultyMode,
     ProblemState,
     ProblemStatus,
     SessionConfig,
     SessionResult,
 )
-from pytrainer.storage.database import Database
+from pygrind.storage.database import Database
 
 
 def _make_exercise(id_: str, tier: int, topic: str, time_estimate: int = 5) -> Exercise:

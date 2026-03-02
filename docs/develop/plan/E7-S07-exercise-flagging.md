@@ -35,8 +35,8 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/problem.py` — Added flag_requested signal and Flag Problem QPushButton, visible in all difficulty modes (~10 lines added)
-- `src/pytrainer/ui/main_menu.py` — Added flags_requested signal and Flagged Exercises button (~8 lines added)
+- `src/pygrind/ui/problem.py` — Added flag_requested signal and Flag Problem QPushButton, visible in all difficulty modes (~10 lines added)
+- `src/pygrind/ui/main_menu.py` — Added flags_requested signal and Flagged Exercises button (~8 lines added)
 - `tests/ui/test_flagging.py` — 10 tests covering button visibility, signal emission, DB storage, duplicate prevention, main menu integration (new file)
 
 **Key Decisions:**

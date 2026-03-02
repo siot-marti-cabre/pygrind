@@ -1,11 +1,11 @@
-# Building the Windows Installer (PyTrainer-Setup.exe)
+# Building the Windows Installer (PyGrind-Setup.exe)
 
 This guide walks you through building the Windows installer on a Windows machine,
-from cloning the repo to producing the final `PyTrainer-Setup.exe`.
+from cloning the repo to producing the final `PyGrind-Setup.exe`.
 
 ## What You'll Produce
 
-A single `PyTrainer-Setup.exe` file (~50-150 MB) that gives users a standard
+A single `PyGrind-Setup.exe` file (~50-150 MB) that gives users a standard
 Windows installation wizard: license agreement, folder selection, Start Menu and
 Desktop shortcuts, and an uninstaller via Add/Remove Programs. The installer
 bundles everything — including an embedded Python runtime — so end users don't
@@ -33,8 +33,8 @@ Open **PowerShell** or **Command Prompt** and run:
 ### 1. Clone the repository
 
 ```powershell
-git clone https://github.com/pytrainer/pytrainer.git
-cd pytrainer
+git clone https://github.com/pygrind/pygrind.git
+cd pygrind
 ```
 
 ### 2. Create a virtual environment and install dependencies
@@ -54,17 +54,17 @@ This installs PyQt6, QScintilla, PyYAML, platformdirs, and the dev tools
 python scripts/build.py --clean
 ```
 
-This runs PyInstaller using `pytrainer.spec` and produces:
+This runs PyInstaller using `pygrind.spec` and produces:
 
 ```
-dist\pytrainer\
-├── pytrainer.exe      ← the main executable
+dist\pygrind\
+├── pygrind.exe      ← the main executable
 ├── exercises\          ← bundled problem files
 ├── PyQt6\              ← Qt runtime DLLs
 └── ...                 ← other dependencies
 ```
 
-> **Verify:** Run `dist\pytrainer\pytrainer.exe` to confirm the app launches correctly.
+> **Verify:** Run `dist\pygrind\pygrind.exe` to confirm the app launches correctly.
 
 ### 4. Download the embedded Python runtime
 
@@ -79,19 +79,19 @@ installer so they don't need system Python.
 
 ### 5. Compile the installer with Inno Setup
 
-**Option A — GUI:** Open `installer/windows/pytrainer.iss` in Inno Setup and
+**Option A — GUI:** Open `installer/windows/pygrind.iss` in Inno Setup and
 press **Build > Compile** (Ctrl+F9).
 
 **Option B — Command line:**
 
 ```powershell
-& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installer\windows\pytrainer.iss
+& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installer\windows\pygrind.iss
 ```
 
 Output:
 
 ```
-dist\PyTrainer-Setup.exe
+dist\PyGrind-Setup.exe
 ```
 
 > **Verify:** Run the installer on a clean machine (or VM) to confirm the wizard
@@ -101,39 +101,39 @@ dist\PyTrainer-Setup.exe
 
 ```powershell
 # Full build sequence (copy-paste friendly)
-git clone https://github.com/pytrainer/pytrainer.git
-cd pytrainer
+git clone https://github.com/pygrind/pygrind.git
+cd pygrind
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e ".[dev]"
 python scripts/build.py --clean
 python installer/windows/embed_python.py
-& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installer\windows\pytrainer.iss
-# → dist\PyTrainer-Setup.exe is ready
+& "C:\Program Files (x86)\Inno Setup 6\iscc.exe" installer\windows\pygrind.iss
+# → dist\PyGrind-Setup.exe is ready
 ```
 
 ## Publishing to GitHub Releases
 
-Once you have `PyTrainer-Setup.exe`, publish it so users can download it:
+Once you have `PyGrind-Setup.exe`, publish it so users can download it:
 
 1. Go to your GitHub repository page
 2. Click **Releases** (right sidebar) > **Draft a new release**
 3. Create a tag (e.g. `v1.0.0`), write release notes
-4. Drag and drop `dist/PyTrainer-Setup.exe` into the **Attach binaries** area
+4. Drag and drop `dist/PyGrind-Setup.exe` into the **Attach binaries** area
 5. Click **Publish release**
 
-Users then visit your Releases page, download `PyTrainer-Setup.exe`, and
+Users then visit your Releases page, download `PyGrind-Setup.exe`, and
 double-click it to get the standard install wizard — no Python, no git, no
 terminal required.
 
 ## What the Installer Does for End Users
 
 1. Shows a license agreement (MIT)
-2. Lets them choose an install folder (default: `C:\Users\<name>\AppData\Local\Programs\PyTrainer`)
+2. Lets them choose an install folder (default: `C:\Users\<name>\AppData\Local\Programs\PyGrind`)
 3. Creates a **Start Menu** shortcut
 4. Optionally creates a **Desktop** shortcut
 5. Installs the app + embedded Python runtime
-6. Offers to launch PyTrainer immediately
+6. Offers to launch PyGrind immediately
 7. Adds an entry to **Add/Remove Programs** for clean uninstallation
 
 ## Troubleshooting
@@ -142,7 +142,7 @@ terminal required.
 |---------|----------|
 | `pyinstaller` not found | Make sure `.venv\Scripts\activate` was run |
 | `iscc` not found | Add Inno Setup to PATH or use full path as shown above |
-| App crashes after install | Run `dist\pytrainer\pytrainer.exe` directly to see error output |
+| App crashes after install | Run `dist\pygrind\pygrind.exe` directly to see error output |
 | `python-embed/` already exists | Delete `installer/windows/python-embed/` and re-run step 4 |
 | Installer too large | Check that `dist/` doesn't contain stale builds; use `--clean` flag |
 
@@ -151,4 +151,4 @@ terminal required.
 When releasing a new version, update the version number in **both** files:
 
 - `pyproject.toml` → `version = "x.y.z"`
-- `installer/windows/pytrainer.iss` → `#define AppVersion "x.y.z"`
+- `installer/windows/pygrind.iss` → `#define AppVersion "x.y.z"`

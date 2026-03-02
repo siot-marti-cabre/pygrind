@@ -35,7 +35,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/output.py` — OutputPanel with show_results, show_error, show_timeout, clear (~85 lines)
+- `src/pygrind/ui/output.py` — OutputPanel with show_results, show_error, show_timeout, clear (~85 lines)
 - `tests/ui/test_output_panel.py` — 8 tests covering all ACs
 
 **Key Decisions:**

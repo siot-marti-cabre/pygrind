@@ -42,7 +42,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/competition.py` — CompetitionWindow with QSplitter layout, buttons, Ctrl+Return shortcut (~85 lines)
+- `src/pygrind/ui/competition.py` — CompetitionWindow with QSplitter layout, buttons, Ctrl+Return shortcut (~85 lines)
 - `tests/ui/test_competition.py` — 12 tests covering all 6 ACs (~120 lines)
 
 **Key Decisions:**

@@ -10,7 +10,7 @@ class TestRuntimePaths:
 
     def test_get_base_path_returns_project_root_in_dev(self):
         """In dev mode (not frozen), base_path should be the project root."""
-        from pytrainer.paths import get_base_path
+        from pygrind.paths import get_base_path
 
         base = get_base_path()
         # In dev, base_path is the project root (where pyproject.toml lives)
@@ -20,7 +20,7 @@ class TestRuntimePaths:
 
     def test_get_base_path_uses_meipass_when_frozen(self, tmp_path):
         """When sys._MEIPASS is set (frozen app), base_path should use it."""
-        from pytrainer.paths import get_base_path
+        from pygrind.paths import get_base_path
 
         fake_meipass = str(tmp_path / "frozen_bundle")
         Path(fake_meipass).mkdir()
@@ -34,7 +34,7 @@ class TestRuntimePaths:
 
     def test_get_exercises_dir_returns_exercises_subdir(self):
         """get_exercises_dir() should return {base}/exercises."""
-        from pytrainer.paths import get_exercises_dir
+        from pygrind.paths import get_exercises_dir
 
         ex_dir = get_exercises_dir()
         assert ex_dir.name == "exercises"
@@ -42,7 +42,7 @@ class TestRuntimePaths:
 
     def test_get_exercises_dir_frozen(self, tmp_path):
         """In frozen mode, exercises dir comes from _MEIPASS."""
-        from pytrainer.paths import get_exercises_dir
+        from pygrind.paths import get_exercises_dir
 
         fake_meipass = str(tmp_path / "frozen_bundle")
         ex_path = Path(fake_meipass) / "exercises"
@@ -60,26 +60,26 @@ class TestSpecFile:
     """E8-S01 AC1/AC2: PyInstaller spec file exists with correct configuration."""
 
     def test_spec_file_exists(self):
-        """pytrainer.spec must exist at project root."""
-        spec = Path(__file__).parent.parent / "pytrainer.spec"
-        assert spec.is_file(), "pytrainer.spec not found at project root"
+        """pygrind.spec must exist at project root."""
+        spec = Path(__file__).parent.parent / "pygrind.spec"
+        assert spec.is_file(), "pygrind.spec not found at project root"
 
     def test_spec_contains_hidden_imports(self):
         """Spec file must declare hidden imports for PyQt6, QScintilla, yaml."""
-        spec = Path(__file__).parent.parent / "pytrainer.spec"
+        spec = Path(__file__).parent.parent / "pygrind.spec"
         content = spec.read_text()
         assert "PyQt6" in content
         assert "yaml" in content
 
     def test_spec_includes_exercises_data(self):
         """Spec file must include exercises/ as data files."""
-        spec = Path(__file__).parent.parent / "pytrainer.spec"
+        spec = Path(__file__).parent.parent / "pygrind.spec"
         content = spec.read_text()
         assert "exercises" in content
 
     def test_spec_uses_onedir_mode(self):
         """Spec file should use --onedir (not --onefile) for faster startup."""
-        spec = Path(__file__).parent.parent / "pytrainer.spec"
+        spec = Path(__file__).parent.parent / "pygrind.spec"
         content = spec.read_text()
         # COLLECT is used in onedir mode (vs MERGE for onefile)
         assert "COLLECT" in content
@@ -103,4 +103,4 @@ class TestBuildScript:
         """Build script should reference the .spec file."""
         build = Path(__file__).parent.parent / "scripts" / "build.py"
         content = build.read_text()
-        assert "pytrainer.spec" in content
+        assert "pygrind.spec" in content

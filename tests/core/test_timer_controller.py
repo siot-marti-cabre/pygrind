@@ -4,9 +4,9 @@ import time
 
 import pytest
 
-from pytrainer.core.timer_controller import TimerController
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import ProblemState
+from pygrind.core.timer_controller import TimerController
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import ProblemState
 
 
 def _make_problems(n: int = 3) -> list[ProblemState]:

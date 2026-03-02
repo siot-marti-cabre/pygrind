@@ -6,9 +6,9 @@ from unittest.mock import patch
 
 import pytest
 
-from pytrainer.core.session_mgr import SessionManager
-from pytrainer.models.exercise import Exercise, ExerciseIndex, TestCase
-from pytrainer.models.session import (
+from pygrind.core.session_mgr import SessionManager
+from pygrind.models.exercise import Exercise, ExerciseIndex, TestCase
+from pygrind.models.session import (
     DifficultyMode,
     ProblemState,
     ProblemStatus,
@@ -66,7 +66,7 @@ def session_mgr(session_config, exercise_index, qapp):
 class TestConstructor:
     def test_constructor_calls_selection(self, session_config, exercise_index, qapp):
         """AC-1: Constructor calls select_session() for 30 exercises."""
-        with patch("pytrainer.core.session_mgr.select_session") as mock_select:
+        with patch("pygrind.core.session_mgr.select_session") as mock_select:
             mock_select.return_value = exercise_index[1][:8]  # return something
             SessionManager(session_config, exercise_index)
             mock_select.assert_called_once()

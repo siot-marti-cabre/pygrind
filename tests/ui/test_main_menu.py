@@ -2,7 +2,7 @@
 
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton
 
-from pytrainer.ui.main_menu import MainMenuScreen
+from pygrind.ui.main_menu import MainMenuScreen
 
 
 class TestMainMenuDisplay:

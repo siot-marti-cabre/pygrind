@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build PyTrainer AppImage from PyInstaller output.
+# Build PyGrind AppImage from PyInstaller output.
 #
 # Prerequisites:
 #   1. Build with: python scripts/build.py
@@ -9,15 +9,15 @@
 # Usage:
 #   bash installer/linux/build_appimage.sh
 #
-# Output: dist/PyTrainer-x86_64.AppImage
+# Output: dist/PyGrind-x86_64.AppImage
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 DIST_DIR="$PROJECT_ROOT/dist"
-PYINSTALLER_OUT="$DIST_DIR/pytrainer"
-APPDIR="$DIST_DIR/PyTrainer.AppDir"
+PYINSTALLER_OUT="$DIST_DIR/pygrind"
+APPDIR="$DIST_DIR/PyGrind.AppDir"
 
 # Check prerequisites
 if [ ! -d "$PYINSTALLER_OUT" ]; then
@@ -43,21 +43,21 @@ mkdir -p "$APPDIR/usr/share/icons/hicolor/scalable/apps"
 cp -r "$PYINSTALLER_OUT"/* "$APPDIR/usr/bin/"
 
 # Copy desktop integration files
-cp "$SCRIPT_DIR/pytrainer.desktop" "$APPDIR/"
-cp "$SCRIPT_DIR/pytrainer.svg" "$APPDIR/"
-cp "$SCRIPT_DIR/pytrainer.svg" "$APPDIR/usr/share/icons/hicolor/scalable/apps/"
+cp "$SCRIPT_DIR/pygrind.desktop" "$APPDIR/"
+cp "$SCRIPT_DIR/pygrind.svg" "$APPDIR/"
+cp "$SCRIPT_DIR/pygrind.svg" "$APPDIR/usr/share/icons/hicolor/scalable/apps/"
 
 # Create AppRun launcher
 cat > "$APPDIR/AppRun" << 'APPRUN'
 #!/bin/bash
 HERE="$(dirname "$(readlink -f "${0}")")"
-exec "$HERE/usr/bin/pytrainer" "$@"
+exec "$HERE/usr/bin/pygrind" "$@"
 APPRUN
 chmod +x "$APPDIR/AppRun"
 
 # Build the AppImage
-ARCH=x86_64 appimagetool "$APPDIR" "$DIST_DIR/PyTrainer-x86_64.AppImage"
+ARCH=x86_64 appimagetool "$APPDIR" "$DIST_DIR/PyGrind-x86_64.AppImage"
 
 echo ""
-echo "AppImage built: $DIST_DIR/PyTrainer-x86_64.AppImage"
-echo "To run: chmod +x dist/PyTrainer-x86_64.AppImage && ./dist/PyTrainer-x86_64.AppImage"
+echo "AppImage built: $DIST_DIR/PyGrind-x86_64.AppImage"
+echo "To run: chmod +x dist/PyGrind-x86_64.AppImage && ./dist/PyGrind-x86_64.AppImage"

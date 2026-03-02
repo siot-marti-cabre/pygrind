@@ -3,8 +3,8 @@
 import logging
 import random
 
-from pytrainer.core.selector import select_session
-from pytrainer.models.exercise import Exercise, ExerciseIndex
+from pygrind.core.selector import select_session
+from pygrind.models.exercise import Exercise, ExerciseIndex
 
 
 def _make_exercises(tier: int, count: int) -> list[Exercise]:

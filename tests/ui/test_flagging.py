@@ -3,10 +3,10 @@
 import pytest
 from PyQt6.QtWidgets import QApplication
 
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import DifficultyMode
-from pytrainer.storage.database import Database
-from pytrainer.ui.problem import ProblemPanel
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import DifficultyMode
+from pygrind.storage.database import Database
+from pygrind.ui.problem import ProblemPanel
 
 
 @pytest.fixture(scope="module")
@@ -101,7 +101,7 @@ class TestFlagSummaryScreen:
     """AC: Flagged Exercises summary accessible from main menu."""
 
     def test_main_menu_has_flags_button(self, _qapp):
-        from pytrainer.ui.main_menu import MainMenuScreen
+        from pygrind.ui.main_menu import MainMenuScreen
 
         menu = MainMenuScreen()
         menu.show()
@@ -110,7 +110,7 @@ class TestFlagSummaryScreen:
         assert menu._flags_button.isVisible()
 
     def test_flags_signal_emitted(self, _qapp):
-        from pytrainer.ui.main_menu import MainMenuScreen
+        from pygrind.ui.main_menu import MainMenuScreen
 
         menu = MainMenuScreen()
         menu.show()

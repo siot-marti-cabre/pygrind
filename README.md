@@ -1,4 +1,4 @@
-# PyTrainer — Python Competition Trainer
+# PyGrind — Python Competition Grind
 
 A cross-platform desktop application that simulates HP Code Wars-style coding competitions. Solve 30 randomly selected Python problems across 5 difficulty tiers within a 3-hour timed session.
 
@@ -26,7 +26,7 @@ pip install -e ".[dev]"
 
 ```bash
 # Run the application
-python -m pytrainer
+python -m pygrind
 
 # Run tests
 pytest
@@ -41,7 +41,7 @@ ruff format .
 ## Project Structure
 
 ```
-src/pytrainer/
+src/pygrind/
 ├── models/     # Data models (Exercise, Session, etc.)
 ├── core/       # Business logic (loader, runner, validator, scorer)
 ├── storage/    # SQLite persistence and auto-save

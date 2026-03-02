@@ -3,15 +3,15 @@
 import pytest
 from PyQt6.QtWidgets import QApplication, QLabel
 
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import (
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import (
     DifficultyMode,
     ProblemState,
     ProblemStatus,
     SessionConfig,
     SessionResult,
 )
-from pytrainer.ui.results import ResultsScreen
+from pygrind.ui.results import ResultsScreen
 
 
 @pytest.fixture(scope="module")

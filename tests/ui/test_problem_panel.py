@@ -2,8 +2,8 @@
 
 from PyQt6.QtWidgets import QLabel, QTextEdit
 
-from pytrainer.models.exercise import Exercise, TestCase
-from pytrainer.ui.problem import ProblemPanel
+from pygrind.models.exercise import Exercise, TestCase
+from pygrind.ui.problem import ProblemPanel
 
 
 def _make_exercise(tmp_path):

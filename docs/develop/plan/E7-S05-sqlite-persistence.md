@@ -16,7 +16,7 @@ M
 [PCT] Implement the Database class handling all SQLite operations: schema creation, session saving, history queries, topic stats, and exercise flag storage. Database file stored at the platform-appropriate user data directory via platformdirs.
 
 ## Acceptance Criteria
-- [x] Database file at platformdirs user_data_dir('pytrainer')/pytrainer.db
+- [x] Database file at platformdirs user_data_dir('pygrind')/pygrind.db
 - [x] Schema auto-created on first run (sessions, problem_results, exercise_flags, autosave)
 - [x] save_session(SessionResult) writes session + all problem results in a transaction
 - [x] get_sessions() returns session summaries ordered by date descending
@@ -30,7 +30,7 @@ M
 - **T3: Write unit tests** -- tests/storage/test_database.py: schema creation, save + retrieve session roundtrip, topic stats aggregation, flag storage. Use pytest tmp_path fixture for isolated DBs.
 
 ## Technical Notes
-- Use platformdirs.user_data_dir("pytrainer") for DB location. Create parent directory if needed. All queries use ? placeholders (never string formatting). Transactions via 'with conn:' context manager.
+- Use platformdirs.user_data_dir("pygrind") for DB location. Create parent directory if needed. All queries use ? placeholders (never string formatting). Transactions via 'with conn:' context manager.
 
 ## Dependencies
 - E5-S04 (Results Summary) -- provides SessionResult to persist.
@@ -38,7 +38,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/storage/database.py` — Database class with schema init, save_session, get_sessions, get_session_detail, get_topic_stats, save_flag, get_flags (~170 lines)
+- `src/pygrind/storage/database.py` — Database class with schema init, save_session, get_sessions, get_session_detail, get_topic_stats, save_flag, get_flags (~170 lines)
 - `tests/storage/test_database.py` — 16 tests covering schema, CRUD, ordering, topic stats, flag operations (new file)
 
 **Key Decisions:**

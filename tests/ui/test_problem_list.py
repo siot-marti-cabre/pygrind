@@ -3,9 +3,9 @@
 import pytest
 from PyQt6.QtWidgets import QApplication
 
-from pytrainer.models.exercise import Exercise
-from pytrainer.models.session import ProblemState, ProblemStatus
-from pytrainer.ui.problem_list import ProblemListWidget
+from pygrind.models.exercise import Exercise
+from pygrind.models.session import ProblemState, ProblemStatus
+from pygrind.ui.problem_list import ProblemListWidget
 
 
 @pytest.fixture(scope="module")

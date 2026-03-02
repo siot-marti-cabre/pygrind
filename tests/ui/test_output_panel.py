@@ -2,7 +2,7 @@
 
 from PyQt6.QtWidgets import QLabel
 
-from pytrainer.ui.output import OutputPanel
+from pygrind.ui.output import OutputPanel
 
 
 class TestPassFailDisplay:

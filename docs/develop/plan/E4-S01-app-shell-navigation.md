@@ -23,12 +23,12 @@ M
 - [x] Window size defaults to 1200x800, resizable
 
 ## Tasks
-- **T1: Implement app.py main()** — Create QApplication, configure logging (file handler at user_data_dir('pytrainer')/pytrainer.log + RotatingFileHandler), set up sys.excepthook, create MainWindow, show().
+- **T1: Implement app.py main()** — Create QApplication, configure logging (file handler at user_data_dir('pygrind')/pygrind.log + RotatingFileHandler), set up sys.excepthook, create MainWindow, show().
 - **T2: Create MainWindow class** — QMainWindow subclass with QStackedWidget as central widget. Methods: show_menu(), show_config(), show_competition(session), show_results(result), show_history().
 - **T3: Add error handler** — Override sys.excepthook to log exception traceback and show QMessageBox.critical(). Ensure app doesn't silently crash.
 
 ## Technical Notes
-- Use platformdirs.user_data_dir("pytrainer") for log path. Window state NOT persisted (keep simple).
+- Use platformdirs.user_data_dir("pygrind") for log path. Window state NOT persisted (keep simple).
 
 ## Dependencies
 - E1-S01 (Initialize Project Structure) -- provides the ui/ package and app.py stub.
@@ -36,8 +36,8 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/app.py` — Rewrote with configure_logging(), install_exception_handler(), --version support (~70 lines)
-- `src/pytrainer/ui/main_window.py` — MainWindow with QStackedWidget, screen register/show methods (~57 lines)
+- `src/pygrind/app.py` — Rewrote with configure_logging(), install_exception_handler(), --version support (~70 lines)
+- `src/pygrind/ui/main_window.py` — MainWindow with QStackedWidget, screen register/show methods (~57 lines)
 - `tests/ui/test_app_shell.py` — 12 tests covering all ACs
 - `tests/test_project_structure.py` — Updated entry point test to use --version flag
 

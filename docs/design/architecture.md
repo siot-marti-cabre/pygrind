@@ -121,7 +121,7 @@ Update ProblemState → UI refresh
   - `load_single(path: Path) -> Exercise | None` — for testing
 - **Dependencies:** PyYAML, `models.exercise`
 - **Patterns:** Fail-soft — invalid exercises are skipped with a log warning
-- **Key files:** `src/pytrainer/core/loader.py`
+- **Key files:** `src/pygrind/core/loader.py`
 
 ### 3.3 Safety Scanner (`core/scanner.py`)
 
@@ -131,7 +131,7 @@ Update ProblemState → UI refresh
   - `check(code: str) -> ScanResult` — returns `ScanResult(safe: bool, violations: list[str])`
 - **Dependencies:** `ast` (stdlib only)
 - **Patterns:** Visitor pattern — walks the AST tree checking `Import`, `ImportFrom`, `Call` nodes
-- **Key files:** `src/pytrainer/core/scanner.py`
+- **Key files:** `src/pygrind/core/scanner.py`
 
 **AST visitor logic:**
 
@@ -157,7 +157,7 @@ class _SafetyVisitor(ast.NodeVisitor):
   - Signals: `finished(stdout: str, stderr: str, exit_code: int)`, `timeout()`, `error(msg: str)`
 - **Dependencies:** `QProcess`, `QTimer`, `tempfile`
 - **Patterns:** Signal/slot — all results communicated via Qt signals; never blocks the UI thread
-- **Key files:** `src/pytrainer/core/runner.py`
+- **Key files:** `src/pygrind/core/runner.py`
 
 **Execution flow:**
 
@@ -189,7 +189,7 @@ Note: QProcess on Windows does not support `preexec_fn`. The 10-second timeout i
   - `ValidationResult(passed: bool, details: str)` — details shows diff on failure
 - **Dependencies:** None (pure Python)
 - **Patterns:** Strategy pattern — validation mode selects comparison function
-- **Key files:** `src/pytrainer/core/validator.py`
+- **Key files:** `src/pygrind/core/validator.py`
 
 **Comparison modes:**
 
@@ -205,7 +205,7 @@ Note: QProcess on Windows does not support `preexec_fn`. The 10-second timeout i
 - **Interface:**
   - `Scorer.calculate(tier: int, time_spent: float, time_estimate: float, attempts: int, solution_viewed: bool) -> int`
 - **Dependencies:** None (pure Python)
-- **Key files:** `src/pytrainer/core/scorer.py`
+- **Key files:** `src/pygrind/core/scorer.py`
 
 **Scoring rules:**
 
@@ -238,7 +238,7 @@ return score
   - Signals: `tick(remaining_secs: int)`, `warning(level: str)`, `expired()`
   - Properties: `remaining: int`, `elapsed: float`, `paused: bool`
 - **Dependencies:** `QTimer`, `QElapsedTimer`
-- **Key files:** `src/pytrainer/core/timer.py`
+- **Key files:** `src/pygrind/core/timer.py`
 
 **Implementation approach:**
 
@@ -263,7 +263,7 @@ Per-problem time: `dict[int, float]` mapping problem index to cumulative seconds
   - Signals: `problem_updated(idx: int, state: ProblemState)`, `session_ended(result: SessionResult)`
 - **Dependencies:** `ExerciseLoader`, `SafetyScanner`, `CodeRunner`, `Validator`, `Scorer`, `TimerController`
 - **Patterns:** Mediator — coordinates all core components; State — tracks problem lifecycle
-- **Key files:** `src/pytrainer/core/session_mgr.py`
+- **Key files:** `src/pygrind/core/session_mgr.py`
 
 ### 3.9 Storage Manager (`storage/database.py`)
 
@@ -277,19 +277,19 @@ Per-problem time: `dict[int, float]` mapping problem index to cumulative seconds
   - `save_flag(exercise_id: str, session_id: str, comment: str)`
   - `get_flags() -> list[ExerciseFlag]`
 - **Dependencies:** `sqlite3` (stdlib)
-- **Key files:** `src/pytrainer/storage/database.py`
+- **Key files:** `src/pygrind/storage/database.py`
 
 **Database location (platform-aware):**
 
 ```python
 from platformdirs import user_data_dir
-db_path = Path(user_data_dir("pytrainer")) / "pytrainer.db"
+db_path = Path(user_data_dir("pygrind")) / "pygrind.db"
 ```
 
 Uses `platformdirs` library for cross-platform user data directory resolution:
-- Linux: `~/.local/share/pytrainer/`
-- macOS: `~/Library/Application Support/pytrainer/`
-- Windows: `C:\Users\<user>\AppData\Local\pytrainer\`
+- Linux: `~/.local/share/pygrind/`
+- macOS: `~/Library/Application Support/pygrind/`
+- Windows: `C:\Users\<user>\AppData\Local\pygrind\`
 
 ### 3.10 Auto-Save (`storage/autosave.py`)
 
@@ -301,7 +301,7 @@ Uses `platformdirs` library for cross-platform user data directory resolution:
   - `has_recovery() -> bool` — check on startup
   - `recover() -> SessionManager | None` — restore from auto-save
 - **Dependencies:** `QTimer`, `Database`, `SessionManager`
-- **Key files:** `src/pytrainer/storage/autosave.py`
+- **Key files:** `src/pygrind/storage/autosave.py`
 
 **Strategy:** Uses a `QTimer` to call `session_mgr.to_json()` every 60 seconds and write it to the `autosave` table (single row, upserted). On clean session end, auto-save row is deleted. On startup, if auto-save row exists → offer recovery.
 
@@ -310,7 +310,7 @@ Uses `platformdirs` library for cross-platform user data directory resolution:
 ### 4.1 Core Types
 
 ```python
-# src/pytrainer/models/exercise.py
+# src/pygrind/models/exercise.py
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -353,7 +353,7 @@ ExerciseIndex = dict[int, list[Exercise]]  # tier -> exercises
 ```
 
 ```python
-# src/pytrainer/models/session.py
+# src/pygrind/models/session.py
 from dataclasses import dataclass, field
 from enum import Enum
 
@@ -489,7 +489,7 @@ CREATE TABLE IF NOT EXISTS autosave (
 - **Database errors**: caught and logged; session continues in-memory if SQLite fails.
 - **Unexpected errors**: top-level exception handler in `app.py` logs and shows generic error dialog.
 
-Python `logging` module with file handler. Log file at `user_data_dir("pytrainer") / "pytrainer.log"`. Rotated at 5 MB.
+Python `logging` module with file handler. Log file at `user_data_dir("pygrind") / "pygrind.log"`. Rotated at 5 MB.
 
 ### 5.2 Failure Modes
 
@@ -568,9 +568,9 @@ tests/
 ```
 python-test-suite/
 ├── src/
-│   └── pytrainer/
+│   └── pygrind/
 │       ├── __init__.py                 # Version string
-│       ├── __main__.py                 # Entry point: python -m pytrainer
+│       ├── __main__.py                 # Entry point: python -m pygrind
 │       ├── app.py                      # QApplication setup, top-level error handler
 │       │
 │       ├── models/
@@ -740,7 +740,7 @@ pip install -e ".[dev]"
 
 ```toml
 [project]
-name = "pytrainer"
+name = "pygrind"
 version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
@@ -759,7 +759,7 @@ dev = [
 ]
 
 [project.scripts]
-pytrainer = "pytrainer.app:main"
+pygrind = "pygrind.app:main"
 ```
 
 ### 10.3 Packaging (Phase 3)

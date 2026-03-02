@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build PyTrainer .dmg for macOS from PyInstaller .app bundle.
+# Build PyGrind .dmg for macOS from PyInstaller .app bundle.
 #
 # Prerequisites:
 #   1. Build on macOS with universal2 Python:
@@ -17,15 +17,15 @@
 # Usage:
 #   bash installer/macos/build_dmg.sh
 #
-# Output: dist/PyTrainer.dmg
+# Output: dist/PyGrind.dmg
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 DIST_DIR="$PROJECT_ROOT/dist"
-APP_BUNDLE="$DIST_DIR/pytrainer.app"
-DMG_OUTPUT="$DIST_DIR/PyTrainer.dmg"
+APP_BUNDLE="$DIST_DIR/pygrind.app"
+DMG_OUTPUT="$DIST_DIR/PyGrind.dmg"
 
 # Check prerequisites
 if [ ! -d "$APP_BUNDLE" ]; then
@@ -40,16 +40,16 @@ fi
 # Remove old DMG
 rm -f "$DMG_OUTPUT"
 
-echo "Building PyTrainer.dmg..."
+echo "Building PyGrind.dmg..."
 
 if command -v create-dmg &>/dev/null; then
     # Styled DMG with create-dmg (prettier)
     create-dmg \
-        --volname "PyTrainer" \
+        --volname "PyGrind" \
         --window-pos 200 120 \
         --window-size 600 400 \
         --icon-size 100 \
-        --icon "pytrainer.app" 150 190 \
+        --icon "pygrind.app" 150 190 \
         --app-drop-link 450 190 \
         --no-internet-enable \
         "$DMG_OUTPUT" \
@@ -63,7 +63,7 @@ else
     cp -r "$APP_BUNDLE" "$STAGING/"
     ln -s /Applications "$STAGING/Applications"
 
-    hdiutil create -volname "PyTrainer" \
+    hdiutil create -volname "PyGrind" \
         -srcfolder "$STAGING" \
         -ov -format UDZO \
         "$DMG_OUTPUT"
@@ -75,6 +75,6 @@ echo ""
 echo "DMG built: $DMG_OUTPUT"
 echo ""
 echo "To install:"
-echo "  1. Open PyTrainer.dmg"
-echo "  2. Drag PyTrainer.app to Applications"
+echo "  1. Open PyGrind.dmg"
+echo "  2. Drag PyGrind.app to Applications"
 echo "  3. First launch: right-click -> Open (Gatekeeper bypass for unsigned app)"

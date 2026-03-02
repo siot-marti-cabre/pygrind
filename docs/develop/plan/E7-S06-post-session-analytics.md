@@ -37,8 +37,8 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/analytics.py` — SessionAnalytics class with tier_performance, time_analysis, topic_performance, score_trend, recommendations (~110 lines)
-- `src/pytrainer/ui/results.py` — Added analytics label widget and set_analytics() method (~35 lines added)
+- `src/pygrind/core/analytics.py` — SessionAnalytics class with tier_performance, time_analysis, topic_performance, score_trend, recommendations (~110 lines)
+- `src/pygrind/ui/results.py` — Added analytics label widget and set_analytics() method (~35 lines added)
 - `tests/core/test_analytics.py` — 10 tests covering tier/topic/time analysis, trend, recommendations (new file)
 - `tests/ui/test_results_analytics.py` — 4 tests for analytics section in ResultsScreen (new file)
 

@@ -37,7 +37,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/timer_widget.py` — TimerWidget with HH:MM:SS display, color thresholds, pause (~52 lines)
+- `src/pygrind/ui/timer_widget.py` — TimerWidget with HH:MM:SS display, color thresholds, pause (~52 lines)
 - `tests/ui/test_timer_widget.py` — 13 tests covering all ACs
 
 **Key Decisions:**

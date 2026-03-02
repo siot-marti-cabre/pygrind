@@ -8,22 +8,22 @@ class TestExerciseModels:
     """AC: models/exercise.py contains Exercise and TestCase dataclasses."""
 
     def test_testcase_dataclass_exists(self):
-        from pytrainer.models.exercise import TestCase
+        from pygrind.models.exercise import TestCase
 
         assert TestCase is not None
 
     def test_exercise_dataclass_exists(self):
-        from pytrainer.models.exercise import Exercise
+        from pygrind.models.exercise import Exercise
 
         assert Exercise is not None
 
     def test_exercise_index_type_alias(self):
-        from pytrainer.models.exercise import ExerciseIndex
+        from pygrind.models.exercise import ExerciseIndex
 
         assert ExerciseIndex is not None
 
     def test_testcase_fields(self):
-        from pytrainer.models.exercise import TestCase
+        from pygrind.models.exercise import TestCase
 
         with tempfile.NamedTemporaryFile(mode="w", suffix=".in", delete=False) as f_in:
             f_in.write("hello input")
@@ -42,7 +42,7 @@ class TestExerciseModels:
 
     def test_testcase_lazy_loading(self):
         """AC: TestCase has lazy-loading properties for input_text and expected_output."""
-        from pytrainer.models.exercise import TestCase
+        from pygrind.models.exercise import TestCase
 
         with tempfile.NamedTemporaryFile(mode="w", suffix=".in", delete=False) as f_in:
             f_in.write("lazy input")
@@ -66,7 +66,7 @@ class TestExerciseModels:
         out_path.unlink()
 
     def test_exercise_all_fields(self):
-        from pytrainer.models.exercise import Exercise
+        from pygrind.models.exercise import Exercise
 
         ex = Exercise(
             id="test-001",
@@ -96,7 +96,7 @@ class TestExerciseModels:
         assert ex.tolerance == 1e-6
 
     def test_exercise_defaults(self):
-        from pytrainer.models.exercise import Exercise
+        from pygrind.models.exercise import Exercise
 
         ex = Exercise(
             id="test-002",
@@ -114,7 +114,7 @@ class TestExerciseModels:
         assert ex.tolerance == 1e-6
 
     def test_exercise_index_is_dict_type(self):
-        from pytrainer.models.exercise import ExerciseIndex
+        from pygrind.models.exercise import ExerciseIndex
 
         # Verify it's the expected type alias
         assert ExerciseIndex is not None
@@ -125,7 +125,7 @@ class TestSessionModels:
 
     def test_problem_status_enum(self):
         """AC: ProblemStatus enum has UNSOLVED, ATTEMPTED, SOLVED values."""
-        from pytrainer.models.session import ProblemStatus
+        from pygrind.models.session import ProblemStatus
 
         assert ProblemStatus.UNSOLVED.value == "unsolved"
         assert ProblemStatus.ATTEMPTED.value == "attempted"
@@ -133,7 +133,7 @@ class TestSessionModels:
 
     def test_difficulty_mode_enum(self):
         """AC: DifficultyMode enum has BEGINNER, MEDIUM, DIFFICULT values."""
-        from pytrainer.models.session import DifficultyMode
+        from pygrind.models.session import DifficultyMode
 
         assert DifficultyMode.BEGINNER.value == "beginner"
         assert DifficultyMode.MEDIUM.value == "medium"
@@ -141,8 +141,8 @@ class TestSessionModels:
 
     def test_problem_state_dataclass(self):
         """AC: models/session.py contains ProblemState dataclass."""
-        from pytrainer.models.exercise import Exercise
-        from pytrainer.models.session import ProblemState, ProblemStatus
+        from pygrind.models.exercise import Exercise
+        from pygrind.models.session import ProblemState, ProblemStatus
 
         ex = Exercise(
             id="ps-test",
@@ -164,8 +164,8 @@ class TestSessionModels:
         assert ps.solution_viewed is False
 
     def test_problem_state_mutable(self):
-        from pytrainer.models.exercise import Exercise
-        from pytrainer.models.session import ProblemState, ProblemStatus
+        from pygrind.models.exercise import Exercise
+        from pygrind.models.session import ProblemState, ProblemStatus
 
         ex = Exercise(
             id="mut-test",
@@ -186,7 +186,7 @@ class TestSessionModels:
 
     def test_session_config_dataclass(self):
         """AC: models/session.py contains SessionConfig dataclass."""
-        from pytrainer.models.session import DifficultyMode, SessionConfig
+        from pygrind.models.session import DifficultyMode, SessionConfig
 
         sc = SessionConfig(mode=DifficultyMode.BEGINNER)
         assert sc.mode == DifficultyMode.BEGINNER
@@ -194,7 +194,7 @@ class TestSessionModels:
         assert sc.tier_distribution == {1: 8, 2: 8, 3: 6, 4: 5, 5: 3}
 
     def test_session_config_default_factory_independence(self):
-        from pytrainer.models.session import DifficultyMode, SessionConfig
+        from pygrind.models.session import DifficultyMode, SessionConfig
 
         sc1 = SessionConfig(mode=DifficultyMode.BEGINNER)
         sc2 = SessionConfig(mode=DifficultyMode.MEDIUM)
@@ -203,7 +203,7 @@ class TestSessionModels:
 
     def test_session_result_dataclass(self):
         """AC: models/session.py contains SessionResult dataclass."""
-        from pytrainer.models.session import DifficultyMode, SessionConfig, SessionResult
+        from pygrind.models.session import DifficultyMode, SessionConfig, SessionResult
 
         config = SessionConfig(mode=DifficultyMode.BEGINNER)
         sr = SessionResult(
@@ -220,28 +220,28 @@ class TestSessionModels:
 
 
 class TestModelsImportable:
-    """AC: All models are importable from pytrainer.models."""
+    """AC: All models are importable from pygrind.models."""
 
     def test_import_exercise(self):
-        from pytrainer.models import Exercise  # noqa: F401
+        from pygrind.models import Exercise  # noqa: F401
 
     def test_import_testcase(self):
-        from pytrainer.models import TestCase  # noqa: F401
+        from pygrind.models import TestCase  # noqa: F401
 
     def test_import_exercise_index(self):
-        from pytrainer.models import ExerciseIndex  # noqa: F401
+        from pygrind.models import ExerciseIndex  # noqa: F401
 
     def test_import_problem_status(self):
-        from pytrainer.models import ProblemStatus  # noqa: F401
+        from pygrind.models import ProblemStatus  # noqa: F401
 
     def test_import_difficulty_mode(self):
-        from pytrainer.models import DifficultyMode  # noqa: F401
+        from pygrind.models import DifficultyMode  # noqa: F401
 
     def test_import_problem_state(self):
-        from pytrainer.models import ProblemState  # noqa: F401
+        from pygrind.models import ProblemState  # noqa: F401
 
     def test_import_session_config(self):
-        from pytrainer.models import SessionConfig  # noqa: F401
+        from pygrind.models import SessionConfig  # noqa: F401
 
     def test_import_session_result(self):
-        from pytrainer.models import SessionResult  # noqa: F401
+        from pygrind.models import SessionResult  # noqa: F401

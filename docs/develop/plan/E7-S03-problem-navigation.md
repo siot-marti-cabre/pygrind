@@ -37,7 +37,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/problem_list.py` — New ProblemListWidget with QListWidget, next/prev buttons, status icons, problem_selected signal (~100 lines)
+- `src/pygrind/ui/problem_list.py` — New ProblemListWidget with QListWidget, next/prev buttons, status icons, problem_selected signal (~100 lines)
 - `tests/ui/test_problem_list.py` — 13 tests covering display, icons, click nav, next/prev, highlight, status update (new file)
 
 **Key Decisions:**

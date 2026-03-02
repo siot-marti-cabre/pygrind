@@ -2,7 +2,7 @@
 
 import pytest
 
-from pytrainer.core.scanner import (
+from pygrind.core.scanner import (
     BLOCKED_BUILTINS,
     BLOCKED_IMPORTS,
     SafetyScanner,

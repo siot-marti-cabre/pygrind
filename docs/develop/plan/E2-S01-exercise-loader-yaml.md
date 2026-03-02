@@ -42,7 +42,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/loader.py` — ExerciseLoader class with load_all(), _load_exercise(), _load_test_cases() (~80 lines)
+- `src/pygrind/core/loader.py` — ExerciseLoader class with load_all(), _load_exercise(), _load_test_cases() (~80 lines)
 - `tests/core/test_loader.py` — 17 tests covering all 7 AC (discovery, parsing, validation, pairing, index, missing files, empty dir)
 
 **Key Decisions:**

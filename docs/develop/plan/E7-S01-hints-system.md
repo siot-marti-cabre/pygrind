@@ -35,7 +35,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/problem.py` — Added hint_viewed signal, hint QLabel, Show Hint QPushButton, mode-based visibility logic in set_exercise() (~30 lines added)
+- `src/pygrind/ui/problem.py` — Added hint_viewed signal, hint QLabel, Show Hint QPushButton, mode-based visibility logic in set_exercise() (~30 lines added)
 - `tests/ui/test_hints.py` — 12 tests covering beginner/medium/difficult modes, fallback text, signal emission (new file)
 
 **Key Decisions:**

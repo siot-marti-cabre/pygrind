@@ -37,7 +37,7 @@ class TestMacOSSpecConfig:
         """Spec file should support --windowed for macOS .app bundle.
         The spec uses console=False on EXE which creates a windowed app.
         """
-        spec = Path(__file__).parent.parent / "pytrainer.spec"
+        spec = Path(__file__).parent.parent / "pygrind.spec"
         content = spec.read_text()
         # console=False creates a windowed app (no terminal)
         assert "console=False" in content or "console = False" in content

@@ -7,44 +7,44 @@ class TestInnoSetupScript:
     """E8-S02 AC1/AC3/AC4/AC5: Inno Setup .iss script with wizard configuration."""
 
     def test_iss_script_exists(self):
-        """installer/windows/pytrainer.iss must exist."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
-        assert iss.is_file(), "installer/windows/pytrainer.iss not found"
+        """installer/windows/pygrind.iss must exist."""
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
+        assert iss.is_file(), "installer/windows/pygrind.iss not found"
 
     def test_iss_references_pyinstaller_output(self):
         """ISS script must reference the PyInstaller dist directory."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
-        assert "dist" in content.lower() or "pytrainer" in content.lower()
+        assert "dist" in content.lower() or "pygrind" in content.lower()
 
     def test_iss_defines_app_name_and_version(self):
         """ISS script must define AppName and AppVersion."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
         assert "AppName" in content
         assert "AppVersion" in content
 
     def test_iss_creates_start_menu_entry(self):
         """ISS script must create Start Menu icons."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
         assert "[Icons]" in content
 
     def test_iss_creates_desktop_shortcut(self):
         """ISS script must offer Desktop shortcut."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
         assert "desktop" in content.lower()
 
     def test_iss_includes_uninstaller(self):
         """ISS script must configure uninstaller (Uninstall* directives)."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
         assert "Uninstall" in content
 
     def test_iss_includes_license(self):
         """ISS script must reference a license file for the wizard."""
-        iss = Path(__file__).parent.parent / "installer" / "windows" / "pytrainer.iss"
+        iss = Path(__file__).parent.parent / "installer" / "windows" / "pygrind.iss"
         content = iss.read_text()
         assert "License" in content
 

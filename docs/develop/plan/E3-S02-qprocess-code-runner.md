@@ -42,7 +42,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/runner.py` — CodeRunner(QObject) with run(), _on_finished(), _cleanup_temp() (~56 lines)
+- `src/pygrind/core/runner.py` — CodeRunner(QObject) with run(), _on_finished(), _cleanup_temp() (~56 lines)
 - `tests/core/test_runner.py` — Integration tests using qtbot.waitSignal() (11 tests)
 
 **Key Decisions:**

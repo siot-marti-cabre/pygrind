@@ -38,7 +38,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/editor.py` — EditorWidget(QsciScintilla) with Python lexer, line numbers, zoom, get/set API (~65 lines)
+- `src/pygrind/ui/editor.py` — EditorWidget(QsciScintilla) with Python lexer, line numbers, zoom, get/set API (~65 lines)
 - `tests/ui/test_editor.py` — 13 tests covering all ACs
 
 **Key Decisions:**

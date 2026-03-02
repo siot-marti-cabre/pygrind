@@ -96,7 +96,7 @@ class TestReadme:
 
     def test_readme_has_project_name(self):
         content = (ROOT / "README.md").read_text()
-        assert "PyTrainer" in content or "pytrainer" in content.lower()
+        assert "PyGrind" in content or "pygrind" in content.lower()
 
     def test_readme_has_dev_setup(self):
         content = (ROOT / "README.md").read_text()

@@ -2,7 +2,7 @@
 
 import pytest
 
-from pytrainer.core.scorer import Scorer
+from pygrind.core.scorer import Scorer
 
 
 class TestBasePoints:

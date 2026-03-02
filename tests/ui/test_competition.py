@@ -35,7 +35,7 @@ _qsci_mock.QsciScintilla = _QsciBase
 _qsci_mock.QsciLexerPython = MagicMock()
 sys.modules.setdefault("PyQt6.Qsci", _qsci_mock)
 
-from pytrainer.ui.competition import CompetitionWindow  # noqa: E402
+from pygrind.ui.competition import CompetitionWindow  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Fixtures

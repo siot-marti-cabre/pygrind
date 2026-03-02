@@ -43,7 +43,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/scanner.py` — SafetyScanner, _SafetyVisitor, ScanResult, BLOCKED_IMPORTS, BLOCKED_BUILTINS (~65 lines)
+- `src/pygrind/core/scanner.py` — SafetyScanner, _SafetyVisitor, ScanResult, BLOCKED_IMPORTS, BLOCKED_BUILTINS (~65 lines)
 - `tests/core/test_scanner.py` — Comprehensive parametrized tests (83 tests)
 
 **Key Decisions:**

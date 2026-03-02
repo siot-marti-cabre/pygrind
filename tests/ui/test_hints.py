@@ -3,9 +3,9 @@
 import pytest
 from PyQt6.QtWidgets import QApplication, QLabel, QPushButton
 
-from pytrainer.models.exercise import Exercise, TestCase
-from pytrainer.models.session import DifficultyMode
-from pytrainer.ui.problem import ProblemPanel
+from pygrind.models.exercise import Exercise, TestCase
+from pygrind.models.session import DifficultyMode
+from pygrind.ui.problem import ProblemPanel
 
 
 @pytest.fixture(scope="module")

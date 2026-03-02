@@ -2,9 +2,9 @@
 
 import pytest
 
-from pytrainer.core.pipeline import ExecutionPipeline, PipelineResult, TestCaseResult
-from pytrainer.core.scanner import SafetyScanner
-from pytrainer.models.exercise import Exercise, TestCase
+from pygrind.core.pipeline import ExecutionPipeline, PipelineResult, TestCaseResult
+from pygrind.core.scanner import SafetyScanner
+from pygrind.models.exercise import Exercise, TestCase
 
 
 @pytest.fixture

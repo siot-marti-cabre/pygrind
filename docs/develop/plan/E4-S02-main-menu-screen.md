@@ -34,7 +34,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/main_menu.py` — MainMenuScreen with title, 3 buttons, signals (~58 lines)
+- `src/pygrind/ui/main_menu.py` — MainMenuScreen with title, 3 buttons, signals (~58 lines)
 - `tests/ui/test_main_menu.py` — 8 tests covering all ACs
 
 **Key Decisions:**

@@ -2,8 +2,8 @@
 
 from PyQt6.QtWidgets import QLabel, QPushButton, QRadioButton
 
-from pytrainer.models.session import DifficultyMode
-from pytrainer.ui.session_config import SessionConfigScreen
+from pygrind.models.session import DifficultyMode
+from pygrind.ui.session_config import SessionConfigScreen
 
 
 class TestRadioButtons:

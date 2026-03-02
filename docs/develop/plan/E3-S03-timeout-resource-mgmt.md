@@ -39,7 +39,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/runner.py` — Added QTimer timeout, timeout signal, _wrap_with_limits(), resource.setrlimit (~95 lines total)
+- `src/pygrind/core/runner.py` — Added QTimer timeout, timeout signal, _wrap_with_limits(), resource.setrlimit (~95 lines total)
 - `tests/core/test_timeout.py` — Timeout and resource limit tests (7 tests)
 
 **Key Decisions:**

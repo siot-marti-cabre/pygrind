@@ -42,7 +42,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/validator.py` — Validator class with compare(), _normalize(), 3 comparison strategies (~115 lines)
+- `src/pygrind/core/validator.py` — Validator class with compare(), _normalize(), 3 comparison strategies (~115 lines)
 - `tests/core/test_validator.py` — 34 tests covering all 8 AC (exact, unordered, tolerance, result, edge cases, mixed, diff, parametrized)
 
 **Key Decisions:**

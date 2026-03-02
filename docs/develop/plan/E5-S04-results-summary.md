@@ -38,7 +38,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/results.py` — ResultsScreen with score display, stats, QTableWidget, back button (~120 lines)
+- `src/pygrind/ui/results.py` — ResultsScreen with score display, stats, QTableWidget, back button (~120 lines)
 - `tests/ui/test_results_screen.py` — 12 tests covering all 6 ACs (~150 lines)
 
 **Key Decisions:**

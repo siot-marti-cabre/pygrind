@@ -6,10 +6,10 @@ from pathlib import Path
 
 import pytest
 
-from pytrainer.core.session_mgr import SessionManager
-from pytrainer.models.exercise import Exercise, ExerciseIndex, TestCase
-from pytrainer.models.session import DifficultyMode, ProblemStatus, SessionConfig
-from pytrainer.storage.autosave import AutoSave
+from pygrind.core.session_mgr import SessionManager
+from pygrind.models.exercise import Exercise, ExerciseIndex, TestCase
+from pygrind.models.session import DifficultyMode, ProblemStatus, SessionConfig
+from pygrind.storage.autosave import AutoSave
 
 # ---------------------------------------------------------------------------
 # Fixtures

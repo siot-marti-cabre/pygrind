@@ -3,8 +3,8 @@
 import tempfile
 from pathlib import Path
 
-from pytrainer.core.display import format_description, get_sample_io, get_tier_badge
-from pytrainer.models.exercise import Exercise, TestCase
+from pygrind.core.display import format_description, get_sample_io, get_tier_badge
+from pygrind.models.exercise import Exercise, TestCase
 
 
 def _make_exercise(test_cases: list[TestCase] | None = None) -> Exercise:

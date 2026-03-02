@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Build script for PyTrainer — automates PyInstaller packaging.
+"""Build script for PyGrind — automates PyInstaller packaging.
 
 Usage:
     python scripts/build.py [--clean]
 
 Platform notes:
-    Linux:   Produces dist/pytrainer/ directory with executable
-    Windows: Produces dist/pytrainer/ — then use Inno Setup to create installer:
+    Linux:   Produces dist/pygrind/ directory with executable
+    Windows: Produces dist/pygrind/ — then use Inno Setup to create installer:
              1. python installer/windows/embed_python.py
-             2. Compile installer/windows/pytrainer.iss with Inno Setup 6+
+             2. Compile installer/windows/pygrind.iss with Inno Setup 6+
     macOS:   Produces .app bundle — then wrap with create-dmg
 
 Prerequisites:
@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-SPEC_FILE = PROJECT_ROOT / "pytrainer.spec"
+SPEC_FILE = PROJECT_ROOT / "pygrind.spec"
 DIST_DIR = PROJECT_ROOT / "dist"
 BUILD_DIR = PROJECT_ROOT / "build"
 
@@ -58,7 +58,7 @@ def build() -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build PyTrainer executable")
+    parser = argparse.ArgumentParser(description="Build PyGrind executable")
     parser.add_argument(
         "--clean", action="store_true", help="Clean build artifacts before building"
     )
@@ -69,7 +69,7 @@ def main() -> None:
 
     rc = build()
     if rc == 0:
-        exe_dir = DIST_DIR / "pytrainer"
+        exe_dir = DIST_DIR / "pygrind"
         print(f"\nBuild successful! Output: {exe_dir}")
     else:
         print("\nBuild FAILED.", file=sys.stderr)

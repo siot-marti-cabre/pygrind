@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from PyQt6.QtWidgets import QStackedWidget, QWidget
 
-from pytrainer.ui.main_window import MainWindow
+from pygrind.ui.main_window import MainWindow
 
 
 class TestMainWindowCreation:
@@ -77,15 +77,15 @@ class TestExceptionHandler:
 
     def test_exception_handler_exists(self, qtbot):
         """The app module should provide an install_exception_handler function."""
-        from pytrainer.app import install_exception_handler
+        from pygrind.app import install_exception_handler
 
         assert callable(install_exception_handler)
 
     def test_exception_handler_logs_error(self, qtbot, tmp_path):
         """Exception handler should log the exception."""
-        from pytrainer.app import install_exception_handler
+        from pygrind.app import install_exception_handler
 
-        with patch("pytrainer.app.QMessageBox") as mock_msgbox:
+        with patch("pygrind.app.QMessageBox") as mock_msgbox:
             install_exception_handler()
             import sys
 
@@ -104,7 +104,7 @@ class TestLogging:
     """AC: Logging configured to file at platformdirs user_data_dir with 5MB rotation."""
 
     def test_configure_logging_creates_handler(self):
-        from pytrainer.app import configure_logging
+        from pygrind.app import configure_logging
 
         logger = configure_logging()
         assert isinstance(logger, logging.Logger)
@@ -115,7 +115,7 @@ class TestLogging:
         assert len(rotating_handlers) >= 1
 
     def test_log_file_rotation_size(self):
-        from pytrainer.app import configure_logging
+        from pygrind.app import configure_logging
 
         logger = configure_logging()
         rotating_handlers = [
@@ -125,11 +125,11 @@ class TestLogging:
         assert handler.maxBytes == 5 * 1024 * 1024  # 5MB
 
     def test_log_file_path_uses_platformdirs(self):
-        from pytrainer.app import configure_logging
+        from pygrind.app import configure_logging
 
         logger = configure_logging()
         rotating_handlers = [
             h for h in logger.handlers if isinstance(h, logging.handlers.RotatingFileHandler)
         ]
         handler = rotating_handlers[0]
-        assert "pytrainer" in handler.baseFilename
+        assert "pygrind" in handler.baseFilename

@@ -44,7 +44,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/pipeline.py` — ExecutionPipeline, PipelineResult, TestCaseResult (~150 lines)
+- `src/pygrind/core/pipeline.py` — ExecutionPipeline, PipelineResult, TestCaseResult (~150 lines)
 - `tests/core/test_pipeline.py` — Integration tests covering all AC (10 tests)
 
 **Key Decisions:**

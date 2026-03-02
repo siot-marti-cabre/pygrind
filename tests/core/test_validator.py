@@ -2,7 +2,7 @@
 
 import pytest
 
-from pytrainer.core.validator import ValidationResult, Validator
+from pygrind.core.validator import ValidationResult, Validator
 
 
 class TestExactMode:

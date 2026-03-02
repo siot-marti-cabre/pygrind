@@ -34,7 +34,7 @@ S
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/core/timer_controller.py` — New TimerController class with start/switch_problem/stop/finalize using time.monotonic() (~60 lines)
+- `src/pygrind/core/timer_controller.py` — New TimerController class with start/switch_problem/stop/finalize using time.monotonic() (~60 lines)
 - `tests/core/test_timer_controller.py` — 8 tests covering tracking, switching, accumulation, finalize, MM:SS format (new file)
 
 **Key Decisions:**

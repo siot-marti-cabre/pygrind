@@ -35,7 +35,7 @@ M
 ## Implementation Summary
 
 **Files Created/Modified:**
-- `src/pytrainer/ui/problem.py` — ProblemPanel with title, tier badge, description, sample I/O (~88 lines)
+- `src/pygrind/ui/problem.py` — ProblemPanel with title, tier badge, description, sample I/O (~88 lines)
 - `tests/ui/test_problem_panel.py` — 11 tests covering all ACs
 
 **Key Decisions:**

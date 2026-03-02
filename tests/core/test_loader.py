@@ -3,8 +3,8 @@
 import logging
 from pathlib import Path
 
-from pytrainer.core.loader import ExerciseLoader
-from pytrainer.models.exercise import Exercise
+from pygrind.core.loader import ExerciseLoader
+from pygrind.models.exercise import Exercise
 
 FIXTURES_DIR = Path(__file__).parents[1] / "fixtures" / "exercises"
 

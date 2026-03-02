@@ -2,7 +2,7 @@
 
 from PyQt6.Qsci import QsciLexerPython
 
-from pytrainer.ui.editor import EditorWidget
+from pygrind.ui.editor import EditorWidget
 
 
 class TestSyntaxHighlighting:

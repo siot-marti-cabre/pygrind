@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PyGrind
+Comment=Python Competition Grind — HP Code Wars-style coding competitions
+Exec=pygrind
+Icon=pygrind
+Type=Application
+Categories=Education;Development;
+Terminal=false
+StartupNotify=true
