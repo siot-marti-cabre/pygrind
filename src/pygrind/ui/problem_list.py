@@ -19,7 +19,6 @@ _STATUS_ICONS = {
     ProblemStatus.SOLVED: "✅",
 }
 
-_MAX_TITLE_LEN = 20
 
 
 class ProblemListWidget(QWidget):
@@ -58,8 +57,6 @@ class ProblemListWidget(QWidget):
         self._list.clear()
         for i, ps in enumerate(problems):
             title = ps.exercise.title
-            if len(title) > _MAX_TITLE_LEN:
-                title = title[:_MAX_TITLE_LEN] + "..."
             icon = _STATUS_ICONS[ps.status]
             self._list.addItem(f"{icon} {i + 1}. {title}")
         self._suppressing_signal = False
@@ -77,8 +74,6 @@ class ProblemListWidget(QWidget):
             item = self._list.item(index)
             if item is not None:
                 title = self._problems[index].exercise.title
-                if len(title) > _MAX_TITLE_LEN:
-                    title = title[:_MAX_TITLE_LEN] + "..."
                 icon = _STATUS_ICONS[status]
                 item.setText(f"{icon} {index + 1}. {title}")
 

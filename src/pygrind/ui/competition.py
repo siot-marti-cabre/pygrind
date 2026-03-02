@@ -5,6 +5,7 @@ from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWidgets import (
     QHBoxLayout,
     QPushButton,
+    QSizePolicy,
     QSplitter,
     QVBoxLayout,
     QWidget,
@@ -29,26 +30,32 @@ class CompetitionWindow(QWidget):
 
         root_layout = QVBoxLayout(self)
 
-        # Timer at top center
+        # Timer at top center — keeps its preferred height, expands horizontally
         self.timer_widget = TimerWidget(self)
-        root_layout.addWidget(self.timer_widget)
+        self.timer_widget.setSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        root_layout.addWidget(self.timer_widget, 0)
 
         # Main horizontal splitter: problem list | problem panel | editor+output
+        # Gets all the vertical stretch
         self._main_splitter = QSplitter(Qt.Orientation.Horizontal, self)
 
         # Far left: problem navigation list
         self.problem_list = ProblemListWidget(self)
+        self.problem_list.setMinimumWidth(100)
         self._main_splitter.addWidget(self.problem_list)
 
         # Middle: problem panel
         self.problem_panel = ProblemPanel(self)
+        self.problem_panel.setMinimumWidth(150)
         self._main_splitter.addWidget(self.problem_panel)
 
         # Right: vertical splitter — editor on top, output below
         self._right_splitter = QSplitter(Qt.Orientation.Vertical, self)
+        self._right_splitter.setMinimumWidth(200)
 
         # Editor + button bar in a container
         editor_container = QWidget(self)
+        editor_container.setMinimumHeight(100)
         editor_layout = QVBoxLayout(editor_container)
         editor_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -90,7 +97,19 @@ class CompetitionWindow(QWidget):
         # Initial main splitter ratio: 15% problem list, 30% problem, 55% editor+output
         self._main_splitter.setSizes([180, 360, 660])
 
-        root_layout.addWidget(self._main_splitter)
+        # Only the editor+output column (index 2) stretches horizontally on resize
+        self._main_splitter.setStretchFactor(0, 0)
+        self._main_splitter.setStretchFactor(1, 0)
+        self._main_splitter.setStretchFactor(2, 1)
+
+        # Prevent child size hints from inflating the window minimum
+        self._main_splitter.setChildrenCollapsible(False)
+        self._right_splitter.setChildrenCollapsible(False)
+
+        root_layout.addWidget(self._main_splitter, 1)
+
+        # Explicit minimum so the window can always shrink back after maximize
+        self.setMinimumSize(600, 400)
 
         # Keyboard shortcut: Ctrl+Enter → Submit
         self._submit_shortcut = QShortcut(QKeySequence("Ctrl+Return"), self)
